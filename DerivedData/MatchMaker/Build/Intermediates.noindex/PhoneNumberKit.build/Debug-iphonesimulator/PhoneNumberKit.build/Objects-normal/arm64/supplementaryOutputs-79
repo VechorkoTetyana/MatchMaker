@@ -1,0 +1,18 @@
+"/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/PhoneNumberKit/PhoneNumberKit/MetadataManager.swift":
+  diagnostics: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/PhoneNumberKit.build/Debug-iphonesimulator/PhoneNumberKit.build/Objects-normal/arm64/MetadataManager.dia"
+  dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/PhoneNumberKit.build/Debug-iphonesimulator/PhoneNumberKit.build/Objects-normal/arm64/MetadataManager.d"
+  object: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/PhoneNumberKit.build/Debug-iphonesimulator/PhoneNumberKit.build/Objects-normal/arm64/MetadataManager.o"
+  swift-dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/PhoneNumberKit.build/Debug-iphonesimulator/PhoneNumberKit.build/Objects-normal/arm64/MetadataManager.swiftdeps"
+  const-values: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/PhoneNumberKit.build/Debug-iphonesimulator/PhoneNumberKit.build/Objects-normal/arm64/MetadataManager.swiftconstvalues"
+"/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/PhoneNumberKit/PhoneNumberKit/MetadataParsing.swift":
+  diagnostics: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/PhoneNumberKit.build/Debug-iphonesimulator/PhoneNumberKit.build/Objects-normal/arm64/MetadataParsing.dia"
+  object: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/PhoneNumberKit.build/Debug-iphonesimulator/PhoneNumberKit.build/Objects-normal/arm64/MetadataParsing.o"
+  const-values: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/PhoneNumberKit.build/Debug-iphonesimulator/PhoneNumberKit.build/Objects-normal/arm64/MetadataParsing.swiftconstvalues"
+  swift-dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/PhoneNumberKit.build/Debug-iphonesimulator/PhoneNumberKit.build/Objects-normal/arm64/MetadataParsing.swiftdeps"
+  dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/PhoneNumberKit.build/Debug-iphonesimulator/PhoneNumberKit.build/Objects-normal/arm64/MetadataParsing.d"
+"/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/PhoneNumberKit/PhoneNumberKit/Formatter.swift":
+  diagnostics: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/PhoneNumberKit.build/Debug-iphonesimulator/PhoneNumberKit.build/Objects-normal/arm64/Formatter.dia"
+  const-values: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/PhoneNumberKit.build/Debug-iphonesimulator/PhoneNumberKit.build/Objects-normal/arm64/Formatter.swiftconstvalues"
+  swift-dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/PhoneNumberKit.build/Debug-iphonesimulator/PhoneNumberKit.build/Objects-normal/arm64/Formatter.swiftdeps"
+  dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/PhoneNumberKit.build/Debug-iphonesimulator/PhoneNumberKit.build/Objects-normal/arm64/Formatter.d"
+  object: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/PhoneNumberKit.build/Debug-iphonesimulator/PhoneNumberKit.build/Objects-normal/arm64/Formatter.o"

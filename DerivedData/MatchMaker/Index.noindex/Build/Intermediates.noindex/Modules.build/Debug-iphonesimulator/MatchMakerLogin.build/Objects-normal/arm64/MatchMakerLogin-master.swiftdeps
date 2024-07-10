@@ -1,0 +1,11 @@
+version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
+options: "64cfad18d298c5c50cf4ca0a4cebde15831a7d51f90716d634bd9dfe46188277"
+build_start_time: [1720602577, 889364000]
+build_end_time: [1720602578, 560670000]
+inputs:
+  ? "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Index.noindex/Build/Intermediates.noindex/Modules.build/Debug-iphonesimulator/MatchMakerLogin.build/DerivedSources/GeneratedAssetSymbols.swift"
+  : [1720601456, 572939799]
+  ? "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Index.noindex/Build/Intermediates.noindex/Modules.build/Debug-iphonesimulator/MatchMakerLogin.build/DerivedSources/resource_bundle_accessor.swift"
+  : [1720601456, 565194000]
+  "/Users/tetyanavechorko/MatchMaker/Modules/Sources/MatchMakerLogin/OTPViewController.swift": [1720521026, 259184427]
+  "/Users/tetyanavechorko/MatchMaker/Modules/Sources/MatchMakerLogin/PhoneNumberViewController.swift": [1720602577, 820982359]
