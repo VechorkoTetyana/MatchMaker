@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
+options: "1139014f8065ae46274c79e870c260ecb9bdd9c4836dab7f871147307f5e085b"
+build_start_time: [1720604971, 786538000]
+build_end_time: [1720604971, 939571000]
+inputs:
+  "/Users/tetyanavechorko/MatchMaker/Modules/Sources/DesignSystem/Fonts.swift": [1720604971, 729762361]

@@ -1,0 +1,56 @@
+version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
+options: "947cca80afde154813a04637fda3c1d9f199686ece5219d39c6ca51c6159b81b"
+build_start_time: [1720601454, 545606000]
+build_end_time: [1720601456, 642874000]
+inputs:
+  ? "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Index.noindex/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/DerivedSources/resource_bundle_accessor.swift"
+  : [1720601454, 263944000]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/Constraint.swift": [1720601452, 676192688]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintAttributes.swift": [1720601452, 676293937]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintConfig.swift": [1720601452, 676364810]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintConstantTarget.swift": [1720601452, 676473100]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintDSL.swift": [1720601452, 676591057]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintDescription.swift": [1720601452, 676665764]
+  ? "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintDirectionalInsetTarget.swift"
+  : [1720601452, 676735929]
+  ? "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintDirectionalInsets.swift"
+  : [1720601452, 676796512]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintInsetTarget.swift": [1720601452, 676857928]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintInsets.swift": [1720601452, 676923385]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintItem.swift": [1720601452, 676988467]
+  ? "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintLayoutGuide+Extensions.swift"
+  : [1720601452, 677060508]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintLayoutGuide.swift": [1720601452, 677125798]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintLayoutGuideDSL.swift": [1720601452, 677191422]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintLayoutSupport.swift": [1720601452, 677255129]
+  ? "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintLayoutSupportDSL.swift"
+  : [1720601452, 677321045]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintMaker.swift": [1720601452, 677415002]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintMakerEditable.swift": [1720601452, 677488917]
+  ? "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintMakerExtendable.swift"
+  : [1720601452, 677590499]
+  ? "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintMakerFinalizable.swift"
+  : [1720601452, 677691706]
+  ? "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintMakerPrioritizable.swift"
+  : [1720601452, 677777246]
+  ? "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintMakerRelatable+Extensions.swift"
+  : [1720601452, 677840412]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintMakerRelatable.swift": [1720601452, 677932410]
+  ? "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintMultiplierTarget.swift"
+  : [1720601452, 677995409]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintOffsetTarget.swift": [1720601452, 678058450]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintPriority.swift": [1720601452, 678125949]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintPriorityTarget.swift": [1720601452, 678187823]
+  ? "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintRelatableTarget.swift"
+  : [1720601452, 678247155]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintRelation.swift": [1720601452, 678308238]
+  ? "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintView+Extensions.swift"
+  : [1720601452, 678408736]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintView.swift": [1720601452, 678473568]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintViewDSL.swift": [1720601452, 678540192]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/Debugging.swift": [1720601452, 678641524]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/LayoutConstraint.swift": [1720601452, 678701939]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/LayoutConstraintItem.swift": [1720601452, 678770897]
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/Typealiases.swift": [1720601452, 678888770]
+  ? "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/UILayoutSupport+Extensions.swift"
+  : [1720601452, 678947436]

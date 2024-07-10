@@ -1,0 +1,30 @@
+"/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintOffsetTarget.swift":
+  diagnostics: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintOffsetTarget.dia"
+  dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintOffsetTarget.d"
+  object: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintOffsetTarget.o"
+  const-values: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintOffsetTarget.swiftconstvalues"
+  swift-dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintOffsetTarget.swiftdeps"
+"/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintRelatableTarget.swift":
+  dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintRelatableTarget.d"
+  swift-dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintRelatableTarget.swiftdeps"
+  const-values: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintRelatableTarget.swiftconstvalues"
+  diagnostics: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintRelatableTarget.dia"
+  object: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintRelatableTarget.o"
+"/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintPriorityTarget.swift":
+  swift-dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintPriorityTarget.swiftdeps"
+  diagnostics: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintPriorityTarget.dia"
+  const-values: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintPriorityTarget.swiftconstvalues"
+  object: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintPriorityTarget.o"
+  dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintPriorityTarget.d"
+"/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintRelation.swift":
+  object: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintRelation.o"
+  swift-dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintRelation.swiftdeps"
+  dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintRelation.d"
+  diagnostics: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintRelation.dia"
+  const-values: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintRelation.swiftconstvalues"
+"/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/SourcePackages/checkouts/SnapKit/Sources/ConstraintPriority.swift":
+  const-values: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintPriority.swiftconstvalues"
+  diagnostics: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintPriority.dia"
+  object: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintPriority.o"
+  dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintPriority.d"
+  swift-dependencies: "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Build/Intermediates.noindex/SnapKit.build/Debug-iphonesimulator/SnapKit.build/Objects-normal/arm64/ConstraintPriority.swiftdeps"

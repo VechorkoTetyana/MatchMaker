@@ -1,0 +1,21 @@
+{
+  "" : {
+    "dependencies" : "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Index.noindex/Build/Intermediates.noindex/MatchMaker.build/Debug-iphoneos/MatchMaker.build/Objects-normal/arm64/MatchMaker-master.d",
+    "diagnostics" : "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Index.noindex/Build/Intermediates.noindex/MatchMaker.build/Debug-iphoneos/MatchMaker.build/Objects-normal/arm64/MatchMaker-master.dia",
+    "emit-module-dependencies" : "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Index.noindex/Build/Intermediates.noindex/MatchMaker.build/Debug-iphoneos/MatchMaker.build/Objects-normal/arm64/MatchMaker-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Index.noindex/Build/Intermediates.noindex/MatchMaker.build/Debug-iphoneos/MatchMaker.build/Objects-normal/arm64/MatchMaker-master-emit-module.dia",
+    "swift-dependencies" : "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Index.noindex/Build/Intermediates.noindex/MatchMaker.build/Debug-iphoneos/MatchMaker.build/Objects-normal/arm64/MatchMaker-master.swiftdeps"
+  },
+  "/Users/tetyanavechorko/MatchMaker/DerivedData/MatchMaker/Index.noindex/Build/Intermediates.noindex/MatchMaker.build/Debug-iphoneos/MatchMaker.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+
+  },
+  "/Users/tetyanavechorko/MatchMaker/MatchMaker/AppDelegate.swift" : {
+
+  },
+  "/Users/tetyanavechorko/MatchMaker/MatchMaker/SceneDelegate.swift" : {
+
+  },
+  "/Users/tetyanavechorko/MatchMaker/MatchMaker/ViewController.swift" : {
+
+  }
+}

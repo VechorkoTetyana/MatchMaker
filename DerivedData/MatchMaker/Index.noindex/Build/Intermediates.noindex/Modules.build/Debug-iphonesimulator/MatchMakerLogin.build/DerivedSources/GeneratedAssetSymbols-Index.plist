@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>colors</key>
+	<array>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/tetyanavechorko/MatchMaker/Modules/Sources/MatchMakerLogin/Resources/Media.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACColorNameAccent</string>
+			<key>relativePath</key>
+			<string>./accent.colorset</string>
+			<key>swiftSymbol</key>
+			<string>accent</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/tetyanavechorko/MatchMaker/Modules/Sources/MatchMakerLogin/Resources/Media.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACColorNameBorder</string>
+			<key>relativePath</key>
+			<string>./border.colorset</string>
+			<key>swiftSymbol</key>
+			<string>border</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/tetyanavechorko/MatchMaker/Modules/Sources/MatchMakerLogin/Resources/Media.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACColorNameTextGray</string>
+			<key>relativePath</key>
+			<string>./textGray.colorset</string>
+			<key>swiftSymbol</key>
+			<string>textGray</string>
+		</dict>
+	</array>
+	<key>images</key>
+	<array/>
+	<key>symbols</key>
+	<array/>
+</dict>
+</plist>

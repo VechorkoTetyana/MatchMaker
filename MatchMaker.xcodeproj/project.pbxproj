@@ -10,9 +10,11 @@
 		B8DE13492C340A9B00E59B82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE13482C340A9B00E59B82 /* AppDelegate.swift */; };
 		B8DE134B2C340A9B00E59B82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE134A2C340A9B00E59B82 /* SceneDelegate.swift */; };
 		B8DE134D2C340A9B00E59B82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE134C2C340A9B00E59B82 /* ViewController.swift */; };
-		B8DE13502C340A9B00E59B82 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B8DE134F2C340A9B00E59B82 /* Base */; };
 		B8DE13522C340A9C00E59B82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8DE13512C340A9C00E59B82 /* Assets.xcassets */; };
 		B8DE13552C340A9C00E59B82 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B8DE13542C340A9C00E59B82 /* Base */; };
+		B8DE13742C3D2C7900E59B82 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8DE13732C3D2C7900E59B82 /* Poppins-Bold.ttf */; };
+		B8FE13E72C3D60FC000EC3EC /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B8FE13E62C3D60FC000EC3EC /* DesignSystem */; };
+		B8FE13E92C3D60FC000EC3EC /* MatchMakerLogin in Frameworks */ = {isa = PBXBuildFile; productRef = B8FE13E82C3D60FC000EC3EC /* MatchMakerLogin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,11 +22,11 @@
 		B8DE13482C340A9B00E59B82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8DE134A2C340A9B00E59B82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B8DE134C2C340A9B00E59B82 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B8DE134F2C340A9B00E59B82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8DE13512C340A9C00E59B82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8DE13542C340A9C00E59B82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8DE13562C340A9C00E59B82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8DE135C2C340B1F00E59B82 /* Modules */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Modules; sourceTree = "<group>"; };
+		B8DE13732C3D2C7900E59B82 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +34,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8FE13E72C3D60FC000EC3EC /* DesignSystem in Frameworks */,
+				B8FE13E92C3D60FC000EC3EC /* MatchMakerLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +48,7 @@
 				B8DE135C2C340B1F00E59B82 /* Modules */,
 				B8DE13472C340A9B00E59B82 /* MatchMaker */,
 				B8DE13462C340A9B00E59B82 /* Products */,
+				B8FE13E52C3D60FC000EC3EC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,15 +63,38 @@
 		B8DE13472C340A9B00E59B82 /* MatchMaker */ = {
 			isa = PBXGroup;
 			children = (
+				B8DE13712C3D2C3800E59B82 /* Resources */,
 				B8DE13482C340A9B00E59B82 /* AppDelegate.swift */,
 				B8DE134A2C340A9B00E59B82 /* SceneDelegate.swift */,
 				B8DE134C2C340A9B00E59B82 /* ViewController.swift */,
-				B8DE134E2C340A9B00E59B82 /* Main.storyboard */,
 				B8DE13512C340A9C00E59B82 /* Assets.xcassets */,
 				B8DE13532C340A9C00E59B82 /* LaunchScreen.storyboard */,
 				B8DE13562C340A9C00E59B82 /* Info.plist */,
 			);
 			path = MatchMaker;
+			sourceTree = "<group>";
+		};
+		B8DE13712C3D2C3800E59B82 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B8DE13722C3D2C5200E59B82 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B8DE13722C3D2C5200E59B82 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B8DE13732C3D2C7900E59B82 /* Poppins-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B8FE13E52C3D60FC000EC3EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +113,10 @@
 			dependencies = (
 			);
 			name = MatchMaker;
+			packageProductDependencies = (
+				B8FE13E62C3D60FC000EC3EC /* DesignSystem */,
+				B8FE13E82C3D60FC000EC3EC /* MatchMakerLogin */,
+			);
 			productName = MatchMaker;
 			productReference = B8DE13452C340A9B00E59B82 /* MatchMaker.app */;
 			productType = "com.apple.product-type.application";
@@ -129,7 +161,7 @@
 			files = (
 				B8DE13522C340A9C00E59B82 /* Assets.xcassets in Resources */,
 				B8DE13552C340A9C00E59B82 /* Base in Resources */,
-				B8DE13502C340A9B00E59B82 /* Base in Resources */,
+				B8DE13742C3D2C7900E59B82 /* Poppins-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,14 +181,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B8DE134E2C340A9B00E59B82 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B8DE134F2C340A9B00E59B82 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B8DE13532C340A9C00E59B82 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -298,7 +322,6 @@
 				INFOPLIST_FILE = MatchMaker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -325,7 +348,6 @@
 				INFOPLIST_FILE = MatchMaker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -363,6 +385,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B8FE13E62C3D60FC000EC3EC /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+		B8FE13E82C3D60FC000EC3EC /* MatchMakerLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MatchMakerLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B8DE133D2C340A9B00E59B82 /* Project object */;
 }
