@@ -1,4 +1,0 @@
-module MatchMakerLogin {
-header "MatchMakerLogin-Swift.h"
-export *
-}
