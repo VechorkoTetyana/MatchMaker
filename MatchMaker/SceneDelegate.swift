@@ -1,5 +1,6 @@
 import UIKit
 import MatchMakerLogin
+import MatchMakerAuthentication
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -11,8 +12,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
+        let authService = AuthServiceLive()
         let controller = PhoneNumberViewController()
+        controller.viewModel = PhoneNumberViewModel(authService: authService)
         let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.styleMatchMaker()
+        
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         self.window = window
@@ -45,7 +50,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
+
+extension UINavigationController {
+    func styleMatchMaker() {
+        navigationBar.tintColor = .accent
+        
+        let image: UIImage = .navigationBack
+        
+        navigationBar.backIndicatorImage = image
+        navigationBar.backIndicatorTransitionMaskImage = image
+
+        navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+    }
+}
+
 

@@ -1,11 +1,5 @@
-//
-//  AppDelegate.swift
-//  MatchMaker
-//
-//  Created by Tetyana Vechorko on 02.07.24.
-//
-
 import UIKit
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +11,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let names = UIFont.fontNames(forFamilyName: family)
                     print("Family: \(family) Font names: \(names)")
                    }*/
+        FirebaseApp.configure()
+        
         return true
     }
 
