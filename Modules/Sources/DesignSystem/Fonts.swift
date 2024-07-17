@@ -6,6 +6,7 @@ enum FontName: String {
     case avenirNextRegular = "AvenirNext-Regular"
     case avenirMedium = "Avenir-Medium"
     case avenirBlack = "Avenir-Black"
+    case poppinsRegular = "Poppins-Regular"
 }
 
 public extension UIFont {
@@ -23,6 +24,18 @@ public extension UIFont {
     
     static var button: UIFont {
         UIFont(name: FontName.avenirBlack.rawValue, size: 20)!
+    }
+    
+    static var otp: UIFont {
+        UIFont(name: FontName.avenirBlack.rawValue, size: 24)!
+    }
+    
+    static var subtitle2: UIFont {
+        UIFont(name: FontName.poppinsRegular.rawValue, size: 16)!
+    }
+    
+    static var subtitleButton: UIFont {
+        UIFont(name: FontName.poppinsBold.rawValue, size: 16)!
     }
 }
 

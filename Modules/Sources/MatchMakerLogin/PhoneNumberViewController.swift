@@ -1,8 +1,9 @@
 import Foundation
 import UIKit
+import DesignSystem
+import MatchMakerAuthentication
 import SnapKit
 import PhoneNumberKit
-import DesignSystem
 
 enum PhoneNumberText: String {
     case title = "Can I get those digits?"
@@ -10,10 +11,26 @@ enum PhoneNumberText: String {
     case continueButton = "Continue"
 }
 
+public final class PhoneNumberViewModel {
+    
+    let authService: AuthService
+    
+    public init(authService: AuthService) {
+        self.authService = authService
+    }
+    
+    public func requestOTP(with phoneNumber: String) async throws {
+        try await authService.requestOTP(forPhoneNumber: phoneNumber)
+    }
+}
+
 public class PhoneNumberViewController: UIViewController {
     
     private weak var stackView: UIStackView!
+    private weak var textField: PhoneNumberTextField!
     private weak var continueBtn: UIButton!
+    
+    public var viewModel: PhoneNumberViewModel!
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,49 +40,6 @@ public class PhoneNumberViewController: UIViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
-    }
-}
-
-extension PhoneNumberViewController {
-
-private func configureKeyboard() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillShow),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillShow),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil
-        )
-    }
-
-@objc private func keyboardWillShow(_ notification: Notification) {
-        guard let userInfo = notification.userInfo,
-              let endFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
-              let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
-        else { return }
-    
-    let animationCurveRawNumber = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSNumber
-    let animationCurveRaw = animationCurveRawNumber?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
-    let animationCurve = UIView.AnimationOptions(rawValue: animationCurveRaw)
-        
-        let isKeyboardHidden = endFrame.origin.y <= UIScreen.main.bounds.size.height
-        
-        // if keyboard is hidden
-    
-    let topMargin = isKeyboardHidden ? -40 : -endFrame.height + view.safeAreaInsets.bottom - 16
-        
-    continueBtn.snp.updateConstraints { make in
-        make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(topMargin)
-    }
-    
-    UIView.animate(withDuration: duration, delay: 0, options: animationCurve) {
-            self.view.layoutIfNeeded()
-        }
     }
 }
 
@@ -157,6 +131,7 @@ extension PhoneNumberViewController {
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-16)
         }
+        self.textField = textField
     }
     
     private func setupContinueButton() {
@@ -168,6 +143,7 @@ extension PhoneNumberViewController {
         button.backgroundColor = UIColor(resource: .accent)
         button.layer.cornerRadius = 14
         button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(didTapContinue), for: .touchUpInside)
         
         view.addSubview(button)
         
@@ -184,4 +160,90 @@ extension PhoneNumberViewController {
          self.continueBtn = button
             
     }
+  /*
+    @objc func didTapContinueBtn() {
+        
+        viewModel.requestOTP(with: <#T##String#>)
+        
+        let otpVC = OTPViewController()
+        navigationController?.pushViewController(otpVC, animated: true)
+    }*/
+}
+
+extension PhoneNumberViewController {
+
+private func configureKeyboard() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+
+@objc private func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let endFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+              let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
+        else { return }
+    
+    let animationCurveRawNumber = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSNumber
+    let animationCurveRaw = animationCurveRawNumber?.uintValue ?? UIView.AnimationOptions.curveEaseInOut.rawValue
+    let animationCurve = UIView.AnimationOptions(rawValue: animationCurveRaw)
+        
+        let isKeyboardHidden = endFrame.origin.y <= UIScreen.main.bounds.size.height
+        
+        // if keyboard is hidden
+    
+    let topMargin = isKeyboardHidden ? -40 : -endFrame.height + view.safeAreaInsets.bottom - 16
+        
+    continueBtn.snp.updateConstraints { make in
+        make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(topMargin)
+    }
+    
+    UIView.animate(withDuration: duration, delay: 0, options: animationCurve) {
+            self.view.layoutIfNeeded()
+        }
+    }
+}
+
+extension PhoneNumberViewController {
+    
+    @objc func didTapContinue() {
+        
+        guard
+            textField.isValidNumber,
+            let phoneNumber = textField.text
+        else { return }
+        
+        Task { [weak self] in
+            do {
+                try await self?.viewModel.requestOTP(with: phoneNumber)
+                
+                self?.presentOTP()
+            } catch {
+                self?.showError(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func presentOTP() {
+        let viewController = OTPViewController()
+        viewController.viewModel = OTPViewModel(authService: viewModel.authService)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension UIViewController {
+    func showError(_ error: String) {
+           let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+           alert.addAction(UIAlertAction(title: "Ok", style: .default))
+           self.present(alert, animated: true)
+       }
 }
