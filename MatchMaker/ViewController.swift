@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  MatchMaker
-//
-//  Created by Tetyana Vechorko on 02.07.24.
-//
-
 import UIKit
 
 class ViewController: UIViewController {

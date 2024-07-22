@@ -36,10 +36,15 @@ public class PhoneNumberViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         configureKeyboard()
+        subscribeToTextChange()
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func subscribeToTextChange() {
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange), name: UITextField.textDidChangeNotification, object: self)
     }
 }
 
@@ -136,13 +141,10 @@ extension PhoneNumberViewController {
     
     private func setupContinueButton() {
         let button = UIButton()
-        button.titleLabel?.font = .button
-        button.titleLabel?.textColor = .white
         button.setTitle(PhoneNumberText.continueButton.rawValue, for: .normal)
         
         button.backgroundColor = UIColor(resource: .accent)
-        button.layer.cornerRadius = 14
-        button.layer.masksToBounds = true
+        
         button.addTarget(self, action: #selector(didTapContinue), for: .touchUpInside)
         
         view.addSubview(button)
@@ -155,7 +157,7 @@ extension PhoneNumberViewController {
         }
         
         view.layoutIfNeeded()
-        button.applyGradient(colours: [UIColor(resource: .accent), UIColor(resource: .backgroundPink)])
+        button.styleMatchMaker()
 
          self.continueBtn = button
             
@@ -237,6 +239,14 @@ extension PhoneNumberViewController {
         let viewController = OTPViewController()
         viewController.viewModel = OTPViewModel(authService: viewModel.authService)
         navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension PhoneNumberViewController {
+    @objc func textFieldDidChange() {
+        print("Text Field Did Change!")
+        continueBtn.isEnabled = textField.isValidNumber
+        continueBtn.alpha = textField.isValidNumber ? 1.0 : 0.25
     }
 }
 

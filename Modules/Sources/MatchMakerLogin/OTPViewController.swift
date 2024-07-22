@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 import DesignSystem
 import MatchMakerAuthentication
+import MatchMakerCore
 import SnapKit
 import PhoneNumberKit
 
@@ -221,13 +222,10 @@ extension OTPViewController {
     
     private func setupContinueButton() {
         let button = UIButton()
-        button.titleLabel?.font = .button
-        button.titleLabel?.textColor = .white
         button.setTitle(PhoneNumberText.continueButton.rawValue, for: .normal)
         
         button.backgroundColor = UIColor(resource: .accent)
-        button.layer.cornerRadius = 14
-        button.layer.masksToBounds = true
+        
         button.addTarget(self, action: #selector(didTapContinueBtn), for: .touchUpInside)
         
         view.addSubview(button)
@@ -242,11 +240,7 @@ extension OTPViewController {
         }
         
         view.layoutIfNeeded()
-        button.applyGradient(
-            colours: [
-                UIColor(resource: .accent),
-                UIColor(resource: .backgroundPink)
-            ])
+        button.styleMatchMaker()
         
          self.continueBtn = button
     }
@@ -306,15 +300,21 @@ extension OTPViewController {
             do {
                 try await self?.viewModel.verifyOTP(with: digits)
                 
-                let vc = UIViewController()
-                vc.modalPresentationStyle = .fullScreen
-                self?.present(vc, animated: true)
+ //               let vc = UIViewController()
+ //               vc.modalPresentationStyle = .fullScreen
+ //               self?.present(vc, animated: true)
+                
+                self?.didLoginSuccessfully()
                 
             } catch {
                 self?.showError(error.localizedDescription)
                 self?.setContinueButtonEnabled()
             }
         }
+    }
+    
+    private func didLoginSuccessfully() {
+        NotificationCenter.default.post(.didLoginSuccessfully)
     }
 }
 
