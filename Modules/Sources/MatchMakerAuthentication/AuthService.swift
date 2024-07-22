@@ -17,13 +17,21 @@ enum UserDefaultKey: String {
 }
 
 public protocol AuthService {
+    var isAuthenticated: Bool { get }
+    
     func requestOTP(forPhoneNumber phoneNumber: String) async throws
     func authenticate(withOTP otp: String) async throws -> User
 }
 
 final public class AuthServiceLive: AuthService {
     
-    public init() {}
+    public var isAuthenticated: Bool {
+        Auth.auth().currentUser != nil
+}
+    
+    public init() {
+ //       try? Auth.auth().signOut()
+    }
     
     public func requestOTP(forPhoneNumber phoneNumber: String) async throws {
         

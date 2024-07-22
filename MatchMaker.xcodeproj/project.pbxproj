@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B826AB3A2C4C3191007337B3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826AB392C4C3191007337B3 /* TabBarController.swift */; };
+		B826AB3D2C4C35BD007337B3 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826AB3C2C4C35BD007337B3 /* Tab.swift */; };
+		B826AB3F2C4C35C9007337B3 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826AB3E2C4C35C9007337B3 /* TabBar.swift */; };
+		B826AB412C4D731B007337B3 /* MatchMakerCore in Frameworks */ = {isa = PBXBuildFile; productRef = B826AB402C4D731B007337B3 /* MatchMakerCore */; };
+		B826AB432C4DBAF0007337B3 /* MatchMakerSettings in Frameworks */ = {isa = PBXBuildFile; productRef = B826AB422C4DBAF0007337B3 /* MatchMakerSettings */; };
 		B8DE13492C340A9B00E59B82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE13482C340A9B00E59B82 /* AppDelegate.swift */; };
 		B8DE134B2C340A9B00E59B82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE134A2C340A9B00E59B82 /* SceneDelegate.swift */; };
 		B8DE134D2C340A9B00E59B82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DE134C2C340A9B00E59B82 /* ViewController.swift */; };
@@ -22,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B826AB392C4C3191007337B3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		B826AB3C2C4C35BD007337B3 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		B826AB3E2C4C35C9007337B3 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		B8DE13452C340A9B00E59B82 /* MatchMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8DE13482C340A9B00E59B82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8DE134A2C340A9B00E59B82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,7 +50,9 @@
 			files = (
 				B8FE13E72C3D60FC000EC3EC /* DesignSystem in Frameworks */,
 				B8F7690C2C453E0100185CB7 /* MatchMakerAuthentication in Frameworks */,
+				B826AB412C4D731B007337B3 /* MatchMakerCore in Frameworks */,
 				B8F7690A2C452B7100185CB7 /* FirebaseAuth in Frameworks */,
+				B826AB432C4DBAF0007337B3 /* MatchMakerSettings in Frameworks */,
 				B8FE13E92C3D60FC000EC3EC /* MatchMakerLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,6 +60,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B826AB3B2C4C35AF007337B3 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				B826AB392C4C3191007337B3 /* TabBarController.swift */,
+				B826AB3C2C4C35BD007337B3 /* Tab.swift */,
+				B826AB3E2C4C35C9007337B3 /* TabBar.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
 		B8DE133C2C340A9B00E59B82 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +91,7 @@
 		B8DE13472C340A9B00E59B82 /* MatchMaker */ = {
 			isa = PBXGroup;
 			children = (
+				B826AB3B2C4C35AF007337B3 /* Tab */,
 				B8DE13712C3D2C3800E59B82 /* Resources */,
 				B8DE13482C340A9B00E59B82 /* AppDelegate.swift */,
 				B8DE134A2C340A9B00E59B82 /* SceneDelegate.swift */,
@@ -128,6 +149,8 @@
 				B8FE13E82C3D60FC000EC3EC /* MatchMakerLogin */,
 				B8F769092C452B7100185CB7 /* FirebaseAuth */,
 				B8F7690B2C453E0100185CB7 /* MatchMakerAuthentication */,
+				B826AB402C4D731B007337B3 /* MatchMakerCore */,
+				B826AB422C4DBAF0007337B3 /* MatchMakerSettings */,
 			);
 			productName = MatchMaker;
 			productReference = B8DE13452C340A9B00E59B82 /* MatchMaker.app */;
@@ -190,6 +213,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8DE134D2C340A9B00E59B82 /* ViewController.swift in Sources */,
+				B826AB3A2C4C3191007337B3 /* TabBarController.swift in Sources */,
+				B826AB3D2C4C35BD007337B3 /* Tab.swift in Sources */,
+				B826AB3F2C4C35C9007337B3 /* TabBar.swift in Sources */,
 				B8DE13492C340A9B00E59B82 /* AppDelegate.swift in Sources */,
 				B8DE134B2C340A9B00E59B82 /* SceneDelegate.swift in Sources */,
 			);
@@ -415,6 +441,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B826AB402C4D731B007337B3 /* MatchMakerCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MatchMakerCore;
+		};
+		B826AB422C4DBAF0007337B3 /* MatchMakerSettings */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MatchMakerSettings;
+		};
 		B8F769092C452B7100185CB7 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B8F769082C452B7100185CB7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
