@@ -24,17 +24,19 @@ public final class SettingsViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        setupNavigationTitle()
+        navigationItem.setMatchMakerTitle("SettingsSS")
         setupEditBarButton()
+        setupNavigationBackButton()
+
     }
     
-    private func setupNavigationTitle() {
+/*    private func setupNavigationTitle() {
         let titleLabel = UILabel()
         titleLabel.text = "Settings"
         titleLabel.font = .navigationTitle
         titleLabel.textColor = .black
         navigationItem.titleView = titleLabel
-    }
+    }*/
     
     private func setupEditBarButton() {
         let rightBarButtonItem = UIBarButtonItem(image: .editIcon, style: .plain, target: self, action: #selector(rightBarButtonTapped))
@@ -42,28 +44,41 @@ public final class SettingsViewController: UIViewController {
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
-    @objc private func rightBarButtonTapped() {
+    private func setupNavigationBackButton() {
+//        navigationController?.navigationBar.prefersLargeTitles = true
+//        navigationController?.navigationBar.largeTitleTextAttributes = [
+//            .font: UIFont.title]
         
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "",
+            style: .plain,
+            target: self,
+            action: nil
+        )
     }
+    
+    @objc private func rightBarButtonTapped() {
+        presentProfile()
+    }
+    
+    private func presentProfile() {
+        let controller = ProfileEditViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
 }
 
 extension SettingsViewController {
     
     private func setupUI() {
-        setupNavigationTitle()
+//      setupNavigationItem()
+        view.backgroundColor = .white
         setupTableView()
     }
     
-  /*  private func setupNavigationTitle() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [
-            .font: UIFont.title
-        ]
-    }*/
-    
     private func setupTableView() {
         let tableView = UITableView()
-//        tableView.backgroundColor = .background
+        view.backgroundColor = .white
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
@@ -131,6 +146,10 @@ extension SettingsViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         tableView.frame.height - view.safeAreaInsets.top - view.safeAreaInsets.bottom - 108
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presentProfile()
     }
 }
 
