@@ -3,22 +3,8 @@ import SnapKit
 import DesignSystem
 
 public final class ProfileEditViewController: UIViewController {
-   
-/*    enum TextFieldType {
-        case name
-        case fullName
-//        case description
-//        case logout
-    }
-    
-    enum Row: Int, CaseIterable {
-        case profilePicture = 0
-        case textField(TextFieldType) = 1
-//        case description = 2
-//        case logout = 3
-    }*/
-    
-    private weak var tableView: UITableView!
+
+    weak var tableView: UITableView!
     
     let viewModel = ProfileEditViewModel()
     
@@ -29,7 +15,7 @@ public final class ProfileEditViewController: UIViewController {
         setupHideKeyBoardGesture()
         subscribeToKeyboard()
         
-        navigationItem.setMatchMakerTitle("ProfilePP")
+        navigationItem.setMatchMakerTitle("Profile")
     }
     
     deinit {
@@ -154,7 +140,6 @@ extension ProfileEditViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let row = Row(rawValue: indexPath.row) else { return UITableViewCell() }
         
         let row = viewModel.rows[indexPath.row]
         
@@ -165,11 +150,7 @@ extension ProfileEditViewController: UITableViewDataSource {
             
             if let selectedImage = viewModel.selectedImage {
                 cell.configure(with: selectedImage)
-
             }
-        
- //           cell.didTap = { [weak self] in
-//              self?.didTapProfilePicture() }
             
             return cell
             
@@ -179,9 +160,9 @@ extension ProfileEditViewController: UITableViewDataSource {
             
 //            cell.textField.delegate = self
             
-            cell.configure(
-                with: viewModel.modelForTextFieldRow(type))
- 
+            cell.configure(with: viewModel.modelForTextFieldRow(type))
+            cell.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+            
             return cell
             
         }
@@ -215,14 +196,13 @@ extension ProfileEditViewController: UIImagePickerControllerDelegate, UINavigati
     }
     
     private func showImagePicker(with sourceType: UIImagePickerController.SourceType) {
-        
         guard UIImagePickerController.isSourceTypeAvailable(sourceType) else { return }
         let imagePicker = UIImagePickerController()
         
         imagePicker.delegate = self
         imagePicker.sourceType = sourceType
+//      imagePicker.allowsEditing = true
         present(imagePicker, animated: true)
-
     }
     
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -238,5 +218,35 @@ extension ProfileEditViewController: UIImagePickerControllerDelegate, UINavigati
             ], with: .automatic)
         }
         picker.dismiss(animated: true)
+    }
+}
+
+extension ProfileEditViewController: UITextFieldDelegate {
+    
+    @objc
+    private func textFieldDidChange(_ textField: UITextField) {
+        guard
+            let indexPath = tableView.indexPathForRow(
+            at: textField.convert(
+                textField.bounds.origin,
+                to: tableView
+            ))
+        else { return }
+        
+        let row = viewModel.rows[indexPath.row]
+        
+        guard case let .textField(type) = row else { return }
+        
+        switch type {
+        case .name:
+            viewModel.fullName = textField.text ?? ""
+        case .location:
+            viewModel.location = textField.text ?? ""
+        }
+        
+//        tableView.reloadData()
+        
+        let cell = tableView.cellForRow(at: indexPath) as? ProfileTextFieldCell
+        cell?.configure(with: viewModel.modelForTextFieldRow(type))
     }
 }

@@ -46,7 +46,7 @@ public final class ProfileEditViewModel {
     }
         
         private func isFullNameValid() -> Bool {
-            fullName.count > 3
+            fullName.count > 2
         }
     
     private func isLocationValid() -> Bool {
