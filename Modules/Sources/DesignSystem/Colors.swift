@@ -16,4 +16,8 @@ public extension UIColor {
     static var backgroundPink: UIColor {
         UIColor(resource: .backgroundPink)
     }
+    
+    static var pinkShadow: UIColor {
+        UIColor(resource: .pinkShadow)
+    }
 }
