@@ -34,6 +34,7 @@ extension ProfileEditPictureCell {
     
     private func setupUI() {
         backgroundColor = .clear
+        contentView.backgroundColor = .clear
         selectionStyle = .none
         
         setupProfileImage()

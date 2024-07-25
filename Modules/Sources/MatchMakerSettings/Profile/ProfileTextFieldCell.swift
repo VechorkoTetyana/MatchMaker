@@ -21,11 +21,11 @@ public final class ProfileTextFieldCell: UITableViewCell {
             self.isValid = isValid
         }
     }
-//    private weak var profileImageView: UIImageView!
-    
+
     weak var textField: UITextField!
     private weak var iconImageView: UIImageView!
     private weak var checkMarkImageView: UIImageView!
+    private weak var containerView: UIView!
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -74,18 +74,51 @@ extension ProfileTextFieldCell {
     
     private func setupUI() {
         backgroundColor = .clear
+        contentView.backgroundColor = .clear
+        
         selectionStyle = .none
+        
+        layer.masksToBounds = false
+        clipsToBounds = false
+        contentView.layer.masksToBounds = false
+        contentView.clipsToBounds = false
+        
+        setupContainer()
         setupIcon()
         setupTextField()
         setupCheckMark()
     }
     
+    private func setupContainer() {
+        let containerView = UIView()
+        containerView.backgroundColor = .white
+        containerView.layer.cornerRadius = 15
+        containerView.layer.masksToBounds = false
+        
+        containerView.layer.shadowColor = UIColor.grayShadow.withAlphaComponent(0.20).cgColor
+        containerView.layer.shadowOpacity = 1
+        containerView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        containerView.layer.shadowRadius = 75
+                
+        contentView.addSubview(containerView)
+        
+        containerView.snp.makeConstraints { make in
+            make.height.equalTo(61)
+            make.top.equalToSuperview().offset(24)
+            make.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(35)
+            make.right.equalToSuperview().offset(-35)
+
+//            make.verticalEdges.equalToSuperview().inset(35)
+        }
+        self.containerView = containerView
+    }
+    
     private func setupIcon() {
         let imageView = UIImageView()
-//        imageView.image = UIImage(resource: .checkMark)
         imageView.contentMode = .scaleAspectFit
         
-        contentView.addSubview(imageView)
+        containerView.addSubview(imageView)
         
         imageView.snp.makeConstraints { make in
             make.size.equalTo(24)
@@ -100,7 +133,7 @@ extension ProfileTextFieldCell {
         textField.textColor = .black
         textField.font = .textField2
         
-        contentView.addSubview(textField)
+        containerView.addSubview(textField)
         
         textField.snp.makeConstraints { make in
             make.left.equalTo(iconImageView.snp.right).offset(13)
@@ -110,10 +143,10 @@ extension ProfileTextFieldCell {
     }
     
     private func setupCheckMark() {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        let imageView = configureRoseBtn()
+        imageView.contentMode = .scaleAspectFill
         
-        contentView.addSubview(imageView)
+        containerView.addSubview(imageView)
         
         imageView.snp.makeConstraints { make in
             make.size.equalTo(23)
@@ -122,5 +155,32 @@ extension ProfileTextFieldCell {
             make.centerY.equalToSuperview()
         }
         self.checkMarkImageView = imageView
+    }
+    
+    private func configureRoseBtn() -> UIImageView {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .pinkShadow
+        imageView.layer.cornerRadius = 12
+        imageView.layer.masksToBounds = true
+        
+        var checkImageView = UIImageView(image: UIImage.galka)
+        checkImageView.contentMode = .center
+        
+        containerView.addSubview(imageView)
+        
+        imageView.addSubview(checkImageView)
+        
+        containerView.addSubview(imageView)
+        
+        imageView.snp.makeConstraints { make in
+            make.size.equalTo(24)
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-19)
+        }
+        
+        checkImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        return imageView
     }
 }
