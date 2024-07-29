@@ -59,10 +59,12 @@ public final class ProfileTextFieldCell: UITableViewCell {
     }
     
     private func setConfigureCheckMarkShadowEnabled() {
-        checkMarkImageView.layer.shadowColor = UIColor.pinkShadow.withAlphaComponent(0.65).cgColor
-        checkMarkImageView.layer.shadowOpacity = 1
-        checkMarkImageView.layer.shadowOffset = CGSize(width: 0, height: 10)
-        checkMarkImageView.layer.shadowRadius = 35
+        checkMarkImageView.layer.figmaShadow(
+            offset: CGPoint(x: 0, y: 10),
+            blur: 35,
+            color: .pinkShadow,
+            opacity: 0.65
+        )
     }
     
     private func checkMarkImage(for model: Model) -> UIImage {
@@ -95,10 +97,12 @@ extension ProfileTextFieldCell {
         containerView.layer.cornerRadius = 15
         containerView.layer.masksToBounds = false
         
-        containerView.layer.shadowColor = UIColor.grayShadow.withAlphaComponent(0.20).cgColor
-        containerView.layer.shadowOpacity = 1
-        containerView.layer.shadowOffset = CGSize(width: 0, height: 4)
-        containerView.layer.shadowRadius = 75
+        containerView.layer.figmaShadow(
+            offset: CGPoint(x: 0, y: 4),
+            blur: 75,
+            color: .grayShadow,
+            opacity: 0.20
+        )
                 
         contentView.addSubview(containerView)
         
@@ -109,7 +113,6 @@ extension ProfileTextFieldCell {
             make.left.equalToSuperview().offset(35)
             make.right.equalToSuperview().offset(-35)
 
-//            make.verticalEdges.equalToSuperview().inset(35)
         }
         self.containerView = containerView
     }
