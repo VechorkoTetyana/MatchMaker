@@ -2,6 +2,12 @@ import UIKit
 import SnapKit
 import DesignSystem
 
+enum ProfileStrings: String {
+    case title = "Profile"
+    case save = "Save"
+
+}
+
 public final class ProfileEditViewController: UIViewController {
 
     weak var tableView: UITableView!
@@ -15,7 +21,7 @@ public final class ProfileEditViewController: UIViewController {
         setupHideKeyBoardGesture()
         subscribeToKeyboard()
         
-        navigationItem.setMatchMakerTitle("Profile")
+        navigationItem.setMatchMakerTitle(ProfileStrings.title.rawValue)
     }
     
     deinit {
@@ -94,11 +100,28 @@ extension ProfileEditViewController {
 extension ProfileEditViewController {
     private func setupUI() {
         view.backgroundColor = .white
-        configureNavigationItem()
+//        configureNavigationItem()
         setupTableView()
     }
+ /*
+    private func setupsaveButton() {
+        let container = UIView()
+        
+        let label = UILabel()
+        label.font = .button2
+        label.textColor = .pinkShadow
+        label.text = ProfileStrings.save.rawValue
+        
+        let button = UIButton()
+        button.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
+        
+    }
     
-    private func configureNavigationItem() {
+  */
+    
+    
+    
+/*    private func configureNavigationItem() {
         navigationItem.largeTitleDisplayMode = .never
         
         let saveButton = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(didTapSave))
@@ -108,7 +131,7 @@ extension ProfileEditViewController {
     @objc
     private func didTapSave() {
         print("did save")
-    }
+    }*/
     
     private func setupTableView() {
         let tableView = UITableView()
