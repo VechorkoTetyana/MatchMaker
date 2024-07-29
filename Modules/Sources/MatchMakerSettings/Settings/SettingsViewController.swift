@@ -63,6 +63,7 @@ public final class SettingsViewController: UIViewController {
     
     private func presentProfile() {
         let controller = ProfileEditViewController()
+        controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
     }
     

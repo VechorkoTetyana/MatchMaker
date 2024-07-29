@@ -26,6 +26,10 @@ public final class ProfileEditViewModel {
         ]
     }
     
+    func save() {
+        print("Did save Profile")
+    }
+    
     func modelForTextFieldRow(_ type: TextFieldType) -> ProfileTextFieldCell.Model {
         switch type {
         case .name:
