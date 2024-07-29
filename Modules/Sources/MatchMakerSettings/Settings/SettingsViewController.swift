@@ -24,7 +24,7 @@ public final class SettingsViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        navigationItem.setMatchMakerTitle("SettingsSS")
+        navigationItem.setMatchMakerTitle("Settings")
         setupEditBarButton()
         setupNavigationBackButton()
 

@@ -45,6 +45,10 @@ public extension UIFont {
         UIFont(name: FontName.avenirBlack.rawValue, size: 20)!
     }
     
+    static var button2: UIFont {
+        UIFont(name: FontName.avenirNextBold.rawValue, size: 22)!
+    }
+    
     static var subtitleButton: UIFont {
         UIFont(name: FontName.poppinsBold.rawValue, size: 16)!
     }
