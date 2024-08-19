@@ -21,13 +21,18 @@ let package = Package(
             name: "MatchMakerLogin",
             targets: ["MatchMakerLogin"]),
         .library(
+            name: "MMDiscovery",
+            targets: ["MMDiscovery"]),
+        .library(
             name: "MatchMakerSettings",
             targets: ["MatchMakerSettings"]),
     ],
     dependencies: [
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.29.0"),
         .package(url: "https://github.com/marmelroy/PhoneNumberKit", from: "3.7.0"),
-        .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.1"))
+        .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.1")),
+        .package(url: "https://github.com/SDWebImage/SDWebImage.git", from: "5.1.0"),
+        .package(url: "https://github.com/Swinject/Swinject.git", .upToNextMajor(from: "2.8.0"))
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -49,6 +54,7 @@ let package = Package(
             "MatchMakerCore",
             "DesignSystem",
             "PhoneNumberKit",
+            "Swinject",
             "SnapKit"
             ],
             resources: [
@@ -57,11 +63,26 @@ let package = Package(
         ),
         
         .target(
+            name: "MMDiscovery",
+            dependencies: [
+                "DesignSystem",
+                "SnapKit",
+                "Swinject",
+                "SDWebImage"
+            ]
+        ),
+        
+        .target(
             name: "MatchMakerSettings",
             dependencies: [
             "DesignSystem",
-            "SnapKit",
             "MatchMakerCore",
+            "SnapKit",
+            "Swinject",
+            "SDWebImage",
+            .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
+            .product(name: "FirebaseDatabase", package: "firebase-ios-sdk"),
+            .product(name: "FirebaseStorage", package: "firebase-ios-sdk")
             ],
             resources: [
                 .process("Resources")

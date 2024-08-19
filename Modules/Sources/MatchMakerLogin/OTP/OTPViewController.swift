@@ -304,7 +304,7 @@ extension OTPViewController {
  //               vc.modalPresentationStyle = .fullScreen
  //               self?.present(vc, animated: true)
                 
-                self?.didLoginSuccessfully()
+ //               self?.didLoginSuccessfully()
                 
             } catch {
                 self?.showError(error.localizedDescription)
@@ -313,9 +313,8 @@ extension OTPViewController {
         }
     }
     
-    private func didLoginSuccessfully() {
-        NotificationCenter.default.post(.didLoginSuccessfully)
-    }
+//    private func didLoginSuccessfully() {
+//        NotificationCenter.default.post(.didLoginSuccessfully)}
 }
 
 

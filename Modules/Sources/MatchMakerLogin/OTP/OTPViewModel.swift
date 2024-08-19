@@ -1,35 +1,39 @@
 import UIKit
 import MatchMakerAuthentication
+import Swinject
 
 enum OTPViewModelError: Error {
     case otpNotValid
 }
 
 public final class OTPViewModel {
-    private var authService: AuthService
-//    private let phoneNumber: String
     
-    init(authService: AuthService) {
-        self.authService = authService
-//        self.phoneNumber = phoneNumber
+    private var authService: AuthService
+    private var container: Container
+    
+    init(container: Container) {
+        self.container = container
+        self.authService = container.resolve(AuthService.self)!
     }
+    
     func verifyOTP(with digits: [String]) async throws {
-        
         guard validate(digits: digits) else {
             throw OTPViewModelError.otpNotValid
         }
         
         let otp = combineToOTP(digits: digits)
         
-        let user = try await authService.authenticate(withOTP: otp)
-        print(user.uid)
+        let _ = try await authService.authenticate(withOTP: otp)
+  
+        await MainActor.run {
+            NotificationCenter.default.post(.didLoginSuccessfully)
+        }
     }
     
     private func validate(digits: [String]) -> Bool {
         for digit in digits {
             guard digit.isValidDigit else { return false }
         }
-        
         return true
     }
     

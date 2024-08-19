@@ -5,15 +5,29 @@ import MatchMakerCore
 
 public final class SettingsViewController: UIViewController {
    
-    private weak var tableView: UITableView!
-    
-    let viewModel = SettingsViewModel()
+    private var tableView: UITableView!
+    public var viewModel: SettingsViewModel!
+    private var footerView: UIView!
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         configureTableView()
         setupNavigationBar()
+        
+        view.layoutIfNeeded()
+        styleFooterButton(in: footerView)
+        
+        viewModel.didUpdateHeader = { [weak self] in
+            self?.tableView.reloadRows(at: [
+                IndexPath(row: 0, section: 0)],
+                with: .automatic)
+        }
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchUserProfile()
     }
     
     private func configureTableView() {
@@ -25,30 +39,13 @@ public final class SettingsViewController: UIViewController {
     
     private func setupNavigationBar() {
         navigationItem.setMatchMakerTitle("Settings")
+        
         setupEditBarButton()
         setupNavigationBackButton()
 
     }
     
-/*    private func setupNavigationTitle() {
-        let titleLabel = UILabel()
-        titleLabel.text = "Settings"
-        titleLabel.font = .navigationTitle
-        titleLabel.textColor = .black
-        navigationItem.titleView = titleLabel
-    }*/
-    
-    private func setupEditBarButton() {
-        let rightBarButtonItem = UIBarButtonItem(image: .editIcon, style: .plain, target: self, action: #selector(rightBarButtonTapped))
-        rightBarButtonItem.tintColor = .accent
-        navigationItem.rightBarButtonItem = rightBarButtonItem
-    }
-    
     private func setupNavigationBackButton() {
-//        navigationController?.navigationBar.prefersLargeTitles = true
-//        navigationController?.navigationBar.largeTitleTextAttributes = [
-//            .font: UIFont.title]
-        
         navigationItem.backBarButtonItem = UIBarButtonItem(
             title: "",
             style: .plain,
@@ -57,24 +54,27 @@ public final class SettingsViewController: UIViewController {
         )
     }
     
+    private func setupEditBarButton() {
+        let rightBarButtonItem = UIBarButtonItem(image: .editIcon, style: .plain, target: self, action: #selector(rightBarButtonTapped))
+        rightBarButtonItem.tintColor = .accent
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+    
     @objc private func rightBarButtonTapped() {
-        presentProfile()
+//        presentProfile()
+/*        let coordinator = ProfileCoordinator(navigationController: navigationController!, container: viewModel.container)
+        coordinator.start() */
+        
+        viewModel.presentProfileEdit()
     }
-    
-    private func presentProfile() {
-        let controller = ProfileEditViewController()
-        controller.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(controller, animated: true)
-    }
-    
 }
 
 extension SettingsViewController {
-    
     private func setupUI() {
-//      setupNavigationItem()
         view.backgroundColor = .white
+        
         setupTableView()
+        configureTableView()
     }
     
     private func setupTableView() {
@@ -83,18 +83,16 @@ extension SettingsViewController {
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.left.equalToSuperview().offset(16)
-            make.right.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         self.tableView = tableView
+        tableView.contentInset = UIEdgeInsets(top: 28, left: 0, bottom: 0, right: 0)
         
-        setupTableFooter()
+        self.footerView = setupTableFooter()
     }
     
-    private func setupTableFooter() {
+    private func setupTableFooter() -> UIView {
         let footerView = UIView()
         footerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 100)
         
@@ -107,18 +105,34 @@ extension SettingsViewController {
             make.height.equalTo(58)
             make.width.equalTo(306)
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-20)
-
+            make.bottom.equalToSuperview().offset(-37)
         }
         
-        tableView.tableFooterView = footerView
-        
-        view.layoutIfNeeded()
-        button.styleMatchMaker()
+        return footerView
     }
     
-    @objc private func logoutButtonTapped() {
-        
+    private func styleFooterButton(in footerView: UIView) {
+        if let button = footerView.subviews.compactMap({ $0 as? UIButton }).first {
+            button.styleMatchMaker()
+        }
+    }
+      
+    @objc
+    private func logoutButtonTapped() {
+        let alert = UIAlertController(title: "Logout", message: "Do you really want to logout?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [weak self] _ in
+            self?.didConfirmLogout()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alert, animated: true)
+    }
+    
+    private func didConfirmLogout() {
+        do {
+            try viewModel.logout()
+        } catch {
+            showError(error.localizedDescription)
+        }
     }
 }
 
@@ -137,20 +151,22 @@ extension SettingsViewController: UITableViewDataSource {
 }
 
 extension SettingsViewController: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 108
-    }
-    
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        tableView.tableFooterView
+        footerView
     }
     
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        tableView.frame.height - view.safeAreaInsets.top - view.safeAreaInsets.bottom - 108
+        tableView.frame.height - view.safeAreaInsets.bottom - 108
     }
     
+/*    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 108
+    }*/
+    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presentProfile()
+//        presentProfile()
+        
+        viewModel.presentProfileEdit()
     }
 }
 

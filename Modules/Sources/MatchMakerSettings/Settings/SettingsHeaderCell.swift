@@ -2,6 +2,7 @@ import UIKit
 import DesignSystem
 import SnapKit
 import MatchMakerCore
+import SDWebImage
 
 class SettingsHeaderCell: UITableViewCell {
     
@@ -22,9 +23,12 @@ class SettingsHeaderCell: UITableViewCell {
     }
     
     func configure(with header: Header) {
-        profileImageView.image = header.image
+//      profileImageView.image = header.image
+        if let url = header.imageUrl {
+            profileImageView.sd_setImage(with: url)
+        }
         nameLbl.text = header.name
-        descriptionLbl.text = header.description
+        descriptionLbl.text = header.location
     }
     
     private func commonInit() {
@@ -42,7 +46,6 @@ extension SettingsHeaderCell {
         setupStackView()
         setupImageView()
         setupLabels()
-//        setupIndicator()
     }
     
     private func setupContainer() {
@@ -82,9 +85,11 @@ extension SettingsHeaderCell {
     
     private func setupImageView() {
         let imageView = UIImageView()
-//        imageView.contentMode = .scaleAspectFit
-        
-//        stackView.addArrangedSubview(imageView)
+        imageView.layer.cornerRadius = 15
+        imageView.layer.masksToBounds = true
+
+        imageView.image = UIImage(resource: .profilePicturePlaceholder)
+        imageView.contentMode = .scaleAspectFill
         contentView.addSubview(imageView)
         
         imageView.snp.makeConstraints { make in

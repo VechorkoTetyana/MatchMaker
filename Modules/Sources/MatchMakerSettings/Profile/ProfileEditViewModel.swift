@@ -1,4 +1,7 @@
 import UIKit
+import Swinject
+import MatchMakerAuthentication
+import MatchMakerCore
 
 enum TextFieldType {
     case name
@@ -15,10 +18,30 @@ public final class ProfileEditViewModel {
     var selectedImage: UIImage?
     var fullName: String = ""
     var location: String = ""
+    var profilePictureUrl: URL?
     
     var rows: [Row]
     
-    init() {
+    private let userProfileRepository: UserProfileRepository
+    private let profilePictureRepository: ProfilePictureRepository
+    private let container: Container
+    private let coordinator: ProfileCoordinator
+    
+   init(
+    container: Container,
+    coordinator: ProfileCoordinator
+    ) {
+        self.container = container
+        self.coordinator = coordinator
+        self.userProfileRepository = container.resolve(UserProfileRepository.self)!
+        self.profilePictureRepository = container.resolve(ProfilePictureRepository.self)!
+        
+        if let profile = userProfileRepository.profile {
+            fullName = profile.fullName
+            location = profile.location
+            profilePictureUrl = profile.profilePictureUrl
+        }
+        
         rows = [
             .profilePicture,
             .textField(.name),
@@ -26,8 +49,19 @@ public final class ProfileEditViewModel {
         ]
     }
     
-    func save() {
-        print("Did save Profile")
+    func save() async throws {
+        let profile = UserProfile(
+            fullName: fullName,
+            location: location,
+            profilePictureUrl: nil
+        )
+        if let selectedImage {
+            try await profilePictureRepository.upload(selectedImage)
+        }
+        
+        await MainActor.run {
+            coordinator.dismiss()
+        }
     }
     
     func modelForTextFieldRow(_ type: TextFieldType) -> ProfileTextFieldCell.Model {
