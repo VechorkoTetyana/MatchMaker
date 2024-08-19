@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import DesignSystem
+import MatchMakerCore
 
 enum ProfileStrings: String {
     case title = "Profile"
@@ -12,10 +13,11 @@ public final class ProfileEditViewController: UIViewController {
     weak var tableView: UITableView!
     weak var saveButtonContainer: UIView!
     
-    let viewModel = ProfileEditViewModel()
+    var viewModel: ProfileEditViewModel!
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupUI()
         configureTableView()
         setupHideKeyBoardGesture()
@@ -28,16 +30,15 @@ public final class ProfileEditViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    
    private func configureTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
-        tableView.contentInsetAdjustmentBehavior = .never
+//      tableView.contentInsetAdjustmentBehavior = .never
+       
         tableView.register(ProfileEditPictureCell.self, forCellReuseIdentifier: ProfileEditPictureCell.identifier)
         tableView.register(ProfileTextFieldCell.self, forCellReuseIdentifier: ProfileTextFieldCell.identifier)
         tableView.register(ButtonCell.self, forCellReuseIdentifier: ButtonCell.identifier)
-    
     }
 }
 
@@ -59,9 +60,7 @@ extension ProfileEditViewController {
         
         label.snp.makeConstraints { make in
             make.left.equalToSuperview()
-//          make.bottom.equalToSuperview().offset(-3)
             make.centerY.equalToSuperview()
-
         }
         
         let button = UIButton()
@@ -73,6 +72,7 @@ extension ProfileEditViewController {
             color: .pinkShadow,
             opacity: 0.55)
         
+        button.isUserInteractionEnabled = false
         container.addSubview(button)
         
         button.snp.makeConstraints { make in
@@ -81,17 +81,13 @@ extension ProfileEditViewController {
             
             make.left.equalTo(label.snp.right).offset(16)
             make.right.equalToSuperview()
-//          make.top.equalToSuperview()
-//          make.bottom.equalToSuperview()
             make.centerY.equalToSuperview()
         }
         
         view.addSubview(container)
         
         container.snp.makeConstraints { make in
-//          make.width.equalTo(110)
             make.height.equalTo(44)
-            
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
             make.right.equalToSuperview().offset(-35)
         }
@@ -100,15 +96,21 @@ extension ProfileEditViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapSaveBtn))
         container.addGestureRecognizer(tap)
+        print("UITapGestureRecognizer added")
     }
     
     @objc
     private func didTapSaveBtn() {
-        
-        viewModel.save()
-        
-//        let otpVC = OTPViewController()
-//        navigationController?.pushViewController(otpVC, animated: true)
+        print("Save button tapped")
+        Task { [weak self] in
+            do {
+                try await self?.viewModel.save()
+                self?.navigationController?.popViewController(animated: true)
+                
+            } catch {
+                self?.showError(error.localizedDescription)
+            }
+        }
     }
     
     private func setupTableView() {
@@ -141,6 +143,8 @@ extension ProfileEditViewController: UITableViewDataSource {
             
             if let selectedImage = viewModel.selectedImage {
                 cell.configure(with: selectedImage)
+            } else if let url = viewModel.profilePictureUrl {
+                cell.configure(with: url)
             }
             
             return cell
@@ -148,9 +152,7 @@ extension ProfileEditViewController: UITableViewDataSource {
         case .textField(let type):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTextFieldCell.identifier, for: indexPath) as? ProfileTextFieldCell
             else { return UITableViewCell() }
-            
-//            cell.textField.delegate = self
-            
+                        
             cell.configure(with: viewModel.modelForTextFieldRow(type))
             cell.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
             
@@ -188,7 +190,6 @@ extension ProfileEditViewController: UIImagePickerControllerDelegate, UINavigati
         
         imagePicker.delegate = self
         imagePicker.sourceType = sourceType
-//      imagePicker.allowsEditing = true
         present(imagePicker, animated: true)
     }
     
@@ -230,9 +231,7 @@ extension ProfileEditViewController: UITextFieldDelegate {
         case .location:
             viewModel.location = textField.text ?? ""
         }
-        
-//        tableView.reloadData()
-        
+                
         let cell = tableView.cellForRow(at: indexPath) as? ProfileTextFieldCell
         cell?.configure(with: viewModel.modelForTextFieldRow(type))
     }
@@ -273,7 +272,6 @@ extension ProfileEditViewController {
     }
     
     @objc private func keyboardWillShow(notification: Notification) {
-        
         guard let userInfo = notification.userInfo,
               let endFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
               let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double

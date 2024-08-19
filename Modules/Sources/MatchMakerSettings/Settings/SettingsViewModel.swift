@@ -1,21 +1,76 @@
 import UIKit
 import DesignSystem
+import Swinject
+import MatchMakerAuthentication
 
 struct Header {
-    let image: UIImage
+    let imageUrl: URL?
     let name: String
-    let description: String
+    let location: String
 }
 
 public final class SettingsViewModel {
     
-    let header: Header
+    var header: Header
     
-    public init() {
+    private let authService: AuthService
+    private let userRepository: UserProfileRepository
+    private let profilePictureRepository: ProfilePictureRepository
+    
+    private let container: Container
+    private let coordinator: SettingsCoordinator
+    
+    var didUpdateHeader: (() -> ())?
+    
+    public init( 
+        container: Container,
+        coordinator: SettingsCoordinator
+    ) {
+        self.container = container
+        self.coordinator = coordinator
+        self.authService = container.resolve(AuthService.self)!
+        self.userRepository = container.resolve(UserProfileRepository.self)!
+        self.profilePictureRepository = container.resolve(ProfilePictureRepository.self)!
+
         self.header = Header(
-            image: UIImage(resource: .profilePicturePlaceholder),
+            imageUrl: nil,
             name: "Setup Your Name",
-            description: "No Location"
+            location: "No Location"
         )
     }
+    
+    func logout() throws {
+        try authService.logout()
+        NotificationCenter.default.post(.didLogout)
+    }
+    
+    func presentProfileEdit() {
+        coordinator.presentProfileEdit()
+    }
+    
+    func fetchUserProfile() {
+        Task { [weak self] in
+            do {
+                guard let profile = try await self?.userRepository.fetchUserProfile() 
+                else { return }
+                                
+                await MainActor.run { [weak self] in
+                    self?.updateHeader(with: profile)
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    private func updateHeader(with userProfile: UserProfile) {
+        self.header = Header(
+            imageUrl: userProfile.profilePictureUrl,
+            name: userProfile.fullName,
+            location: userProfile.location
+        )
+        
+        didUpdateHeader?()
+    }
 }
+

@@ -2,6 +2,8 @@ import UIKit
 
 public enum AppNotification: String {
     case didLoginSuccessfully
+    case didLogout
+
 }
 
 public extension NotificationCenter {

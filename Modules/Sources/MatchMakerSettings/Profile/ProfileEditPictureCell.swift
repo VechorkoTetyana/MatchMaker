@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import DesignSystem
+import SDWebImage
 
 class ProfileEditPictureCell: UITableViewCell {
     
@@ -19,15 +20,18 @@ class ProfileEditPictureCell: UITableViewCell {
         commonInit()
     }
     
+    func configure(with image: UIImage) {
+        profileImageView.image = image
+    }
+    
+    func configure(with url: URL) {
+        profileImageView?.sd_setImage(with: url)
+    }
+    
     private func commonInit() {
         setupUI()
     }
     
-    func configure(with image: UIImage?) {
-        if let image {
-            profileImageView.image = image
-        }
-    }
 }
 
 extension ProfileEditPictureCell {

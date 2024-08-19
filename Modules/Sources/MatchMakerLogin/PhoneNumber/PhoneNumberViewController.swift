@@ -3,25 +3,13 @@ import UIKit
 import DesignSystem
 import MatchMakerAuthentication
 import SnapKit
+import Swinject
 import PhoneNumberKit
 
 enum PhoneNumberText: String {
     case title = "Can I get those digits?"
     case subtitle = "Enter your phone number below to create your free account."
     case continueButton = "Continue"
-}
-
-public final class PhoneNumberViewModel {
-    
-    let authService: AuthService
-    
-    public init(authService: AuthService) {
-        self.authService = authService
-    }
-    
-    public func requestOTP(with phoneNumber: String) async throws {
-        try await authService.requestOTP(forPhoneNumber: phoneNumber)
-    }
 }
 
 public class PhoneNumberViewController: UIViewController {
@@ -227,19 +215,18 @@ extension PhoneNumberViewController {
         Task { [weak self] in
             do {
                 try await self?.viewModel.requestOTP(with: phoneNumber)
-                
-                self?.presentOTP()
             } catch {
                 self?.showError(error.localizedDescription)
             }
         }
     }
     
-    private func presentOTP() {
+/*    private func presentOTP() {
         let viewController = OTPViewController()
-        viewController.viewModel = OTPViewModel(authService: viewModel.authService)
+        viewController.viewModel = OTPViewModel(container: viewModel.container)
         navigationController?.pushViewController(viewController, animated: true)
     }
+ */
 }
 
 extension PhoneNumberViewController {
@@ -250,6 +237,7 @@ extension PhoneNumberViewController {
     }
 }
 
+/*
 extension UIViewController {
     func showError(_ error: String) {
            let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
@@ -257,3 +245,4 @@ extension UIViewController {
            self.present(alert, animated: true)
        }
 }
+*/
