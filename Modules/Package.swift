@@ -76,6 +76,7 @@ let package = Package(
             name: "MatchMakerSettings",
             dependencies: [
             "DesignSystem",
+            "MatchMakerAuthentication",
             "MatchMakerCore",
             "SnapKit",
             "Swinject",

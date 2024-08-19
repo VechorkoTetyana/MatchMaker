@@ -39,43 +39,27 @@ class TabBarController: UITabBarController {
     
     private func setupViewController() {
         // home, matches, inbox, settings
-        
-        let home = DiscoveryViewController()
-        home.tabBarItem = Tab.home.tabBarItem
-        
-        let matches = UIViewController()
-        matches.tabBarItem = Tab.matches.tabBarItem
-        
+
+        let home = setupDiscovery()
+        let matches = setupMatches()
         let inbox = UIViewController()
         inbox.tabBarItem = Tab.inbox.tabBarItem
         
-        let settingsNav = setupSettings()
-
-//        let settings = SettingsViewController()
-//        let settingsNav = UINavigationController(rootViewController: settings)
-//        settingsNav.styleMatchMaker()
-        
-//        settings.title = Tab.settings.tabBarItem.title
-        
-//        settings.tabBarItem = Tab.settings.tabBarItem
+        let settings = setupSettings()
 
         viewControllers = [
             home,
             matches,
             inbox,
-            settingsNav
+            settings
         ]
-        
-//        selectedViewController = settingsNav
     }
     
     private func setupSettings() -> UIViewController {
-        //     let settings = SettingsViewController()
-        //     settings.viewModel = SettingsViewModel(container: container)
-        let settingsNav = UINavigationController()
+        let nav = UINavigationController()
         
         let coordinator = SettingsCoordinator(
-            navigationController: settingsNav,
+            navigationController: nav,
             container: container
         )
         
@@ -83,6 +67,36 @@ class TabBarController: UITabBarController {
         
         coordinator.rootViewController.tabBarItem = Tab.settings.tabBarItem
         
-        return settingsNav
+        return nav
+    }
+    
+    private func setupDiscovery() -> UIViewController {
+        let nav = UINavigationController()
+        
+        let coordinator = DiscoveryCoordinator(
+            navigationController: nav,
+            container: container
+        )
+        
+        coordinator.start()
+        
+        coordinator.rootViewController.tabBarItem = Tab.home.tabBarItem
+        
+        return nav
+    }
+    
+    private func setupMatches() -> UIViewController {
+        let nav = UINavigationController()
+        
+        let coordinator = MatchesCoordinator(
+            navigationController: nav,
+            container: container
+        )
+        
+        coordinator.start()
+        
+        coordinator.rootViewController.tabBarItem = Tab.matches.tabBarItem
+        
+        return nav
     }
 }
