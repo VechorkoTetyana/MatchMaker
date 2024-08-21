@@ -66,9 +66,12 @@ let package = Package(
             name: "MMDiscovery",
             dependencies: [
                 "DesignSystem",
+                "MatchMakerAuthentication",
                 "SnapKit",
                 "Swinject",
-                "SDWebImage"
+                "SDWebImage",
+                .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseDatabase", package: "firebase-ios-sdk")
             ]
         ),
         
@@ -78,6 +81,7 @@ let package = Package(
             "DesignSystem",
             "MatchMakerAuthentication",
             "MatchMakerCore",
+            "MMDiscovery",
             "SnapKit",
             "Swinject",
             "SDWebImage",

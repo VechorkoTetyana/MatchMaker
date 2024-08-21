@@ -10,7 +10,7 @@ public struct User: Decodable {
 
 }
 
-private enum SwipeDirection {
+public enum SwipeDirection {
     case left
     case right
 }
@@ -143,8 +143,18 @@ public class DiscoveryViewController: UIViewController {
             topCard.alpha = 0
         } completion: { _ in
             // tell our view model to fire network request - it would be your task
+            self.didFinishSwiupeAnimation(on: topCard, with: direction)
+            
             self.cardStackView.removeTopCard()
         }
+    }
+    
+    private func didFinishSwiupeAnimation(on card: CardView, with direction: SwipeDirection) {
+        Task {
+                await self.viewModel.didSwipe(direction, on: card.user)
+        }
+        
+        self.cardStackView.removeTopCard()
     }
     
     private func resetCard(_ card: CardView) {

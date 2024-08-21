@@ -1,6 +1,7 @@
 import Foundation
 import FirebaseDatabase
 import MatchMakerAuthentication
+import MatchMakerCore
 
 public enum UserProfileRepositoryError: Error {
     case notAuthenticated
@@ -33,6 +34,7 @@ public class UserProfileRepositoryLive: UserProfileRepository {
     public init(authService: AuthService = AuthServiceLive()) {
         reference = Database.database().reference()
         self.authService = authService
+        subscribeToLogout()
     }
     
     public func saveUserProfile(_ userProfile: UserProfile) throws {
@@ -65,5 +67,20 @@ public class UserProfileRepositoryLive: UserProfileRepository {
         reference.child("users").child(user.uid).updateChildValues([
             "profilePictureUrl": url.absoluteString
         ])
+    }
+}
+
+extension UserProfileRepositoryLive {
+    private func subscribeToLogout() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didLogout),
+            name: Notification.Name(AppNotification.didLogout.rawValue),
+            object: nil
+        )
+    }
+    
+    @objc private func didLogout() {
+        profile = nil
     }
 }
