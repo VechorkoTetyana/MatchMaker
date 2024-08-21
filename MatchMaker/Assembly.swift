@@ -1,5 +1,6 @@
 import Foundation
 import MatchMakerAuthentication
+import MMDiscovery
 import MatchMakerLogin
 import MatchMakerSettings
 import Swinject
@@ -31,6 +32,14 @@ final class Assembly {
         
         container.register(ProfilePictureRepository.self) { container in
             profilePictureRepository
+        }
+        
+        container.register(DiscoveryRepository.self) { _ in
+            DiscoveryRepositoryLive(authService: authService)
+        }
+        
+        container.register(MatchesRepository.self) { _ in
+            MatchesRepositoryLive(authService: authService)
         }
         
 //        let authServiceFromContainer = container.resolve(authService.self)!

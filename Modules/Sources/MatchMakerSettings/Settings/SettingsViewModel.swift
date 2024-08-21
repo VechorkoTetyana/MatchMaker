@@ -2,6 +2,7 @@ import UIKit
 import DesignSystem
 import Swinject
 import MatchMakerAuthentication
+import MatchMakerCore
 
 struct Header {
     let imageUrl: URL?

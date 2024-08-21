@@ -5,6 +5,7 @@ import FirebaseAuth
 
 public enum AuthError: Error {
     case noVerificationID
+    case notAuthenticated
 }
 
 public struct User {
