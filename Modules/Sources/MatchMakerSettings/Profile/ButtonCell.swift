@@ -45,18 +45,18 @@ extension ButtonCell {
         backgroundColor = .clear
         selectionStyle = .none
         
-        configureContenteView()
-        setupiconImageView()
+        configureContentView()
+        setupIconImageView()
         setupTitle()
     }
     
-    private func configureContenteView() {
+    private func configureContentView() {
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 8
         contentView.layer.masksToBounds = true
     }
     
-    private func setupiconImageView() {
+    private func setupIconImageView() {
         let imageView = UIImageView()
  //       imageView.image = UIImage(resource: .avatar)
         

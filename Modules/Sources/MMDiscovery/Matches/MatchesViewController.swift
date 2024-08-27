@@ -97,6 +97,8 @@ extension MatchesViewController: UICollectionViewDelegate, UICollectionViewDataS
         else { return UICollectionViewCell() }
         
         let match = viewModel.matches[indexPath.item]
+        print("Configuring cell check for Matchcell")
+
         cell.configure(with: match)
         
         return cell

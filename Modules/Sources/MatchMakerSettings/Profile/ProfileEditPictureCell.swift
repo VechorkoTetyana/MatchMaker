@@ -1,7 +1,7 @@
 import UIKit
-import SnapKit
 import DesignSystem
 import SDWebImage
+import SnapKit
 
 class ProfileEditPictureCell: UITableViewCell {
     
@@ -66,5 +66,4 @@ extension ProfileEditPictureCell {
         
         self.profileImageView = imageView
     }
-    
 }

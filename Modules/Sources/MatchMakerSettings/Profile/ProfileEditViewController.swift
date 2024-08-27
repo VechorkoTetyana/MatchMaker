@@ -72,7 +72,9 @@ extension ProfileEditViewController {
             color: .pinkShadow,
             opacity: 0.55)
         
-        button.isUserInteractionEnabled = false
+        button.isUserInteractionEnabled = true
+        button.addTarget(self, action: #selector(didTapSaveBtn), for: .touchUpInside)
+        
         container.addSubview(button)
         
         button.snp.makeConstraints { make in
@@ -95,7 +97,7 @@ extension ProfileEditViewController {
         self.saveButtonContainer = container
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapSaveBtn))
-        container.addGestureRecognizer(tap)
+//        container.addGestureRecognizer(tap)
         print("UITapGestureRecognizer added")
     }
     

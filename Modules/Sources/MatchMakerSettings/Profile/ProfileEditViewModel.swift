@@ -1,7 +1,7 @@
 import UIKit
-import Swinject
 import MatchMakerAuthentication
 import MatchMakerCore
+import Swinject
 
 enum TextFieldType {
     case name
@@ -58,6 +58,8 @@ public final class ProfileEditViewModel {
         if let selectedImage {
             try await profilePictureRepository.upload(selectedImage)
         }
+        
+        try userProfileRepository.saveUserProfile(profile)
         
         await MainActor.run {
             coordinator.dismiss()

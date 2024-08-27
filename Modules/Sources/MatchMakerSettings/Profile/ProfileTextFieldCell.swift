@@ -166,15 +166,13 @@ extension ProfileTextFieldCell {
         imageView.layer.cornerRadius = 12
         imageView.layer.masksToBounds = true
         
-        var checkImageView = UIImageView(image: UIImage.galka)
+        let checkImageView = UIImageView(image: UIImage.galka)
         checkImageView.contentMode = .center
         
         containerView.addSubview(imageView)
         
         imageView.addSubview(checkImageView)
-        
-        containerView.addSubview(imageView)
-        
+                
         imageView.snp.makeConstraints { make in
             make.size.equalTo(24)
             make.centerY.equalToSuperview()
