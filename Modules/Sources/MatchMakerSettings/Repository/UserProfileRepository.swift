@@ -42,10 +42,17 @@ public class UserProfileRepositoryLive: UserProfileRepository {
             throw UserProfileRepositoryError.notAuthenticated
         }
         
+        let fullName = userProfile.fullName ?? ""
+        let location = userProfile.location ?? ""
+        
         reference.child("users").child(user.uid).updateChildValues([
             "fullName": userProfile.fullName,
             "location": userProfile.location
-        ])
+        ]) { error, _ in
+            if let error = error {
+                print("Error when User Profile saving \(error.localizedDescription)")
+            }
+        }
     }
     
     public func fetchUserProfile() async throws -> UserProfile {

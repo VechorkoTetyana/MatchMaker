@@ -26,11 +26,17 @@ public class DiscoveryRepositoryLive: DiscoveryRepository {
         guard let currentUser = authService.user else {
             throw AuthError.notAuthenticated
         }
-        
+        print("fetchPotentialMatches test 1")
         let allUsers = try await fetchUsers()
+        
+        print("fetchPotentialMatches test 2")
+
         let swipes = await fetchSwipes(for: currentUser.uid)
         
-        return allUsers.compactMap { uid, user in
+        print("fetchPotentialMatches test 3")
+
+        
+        let res: [User] =  allUsers.compactMap { uid, user in
             if uid == currentUser.uid {
                 return nil
             }
@@ -43,10 +49,17 @@ public class DiscoveryRepositoryLive: DiscoveryRepository {
             
             return User(uid: uid, name: user.fullName, imageURL: url)
         }
+        print("fetchPotentialMatches test")
+        return res
     }
     
     private func fetchUsers() async throws -> [String: UserProfile] {
+        print("Test 1 before Func")
+        
         let snapshot = try await database.child("users").getData()
+        
+        print("Test 2 after Func")
+
         guard snapshot.exists() else { return [:] }
         
         return try snapshot.data(as: [String: UserProfile].self)
@@ -67,18 +80,26 @@ public class DiscoveryRepositoryLive: DiscoveryRepository {
             throw AuthError.notAuthenticated
         }
         
-        try await database.child("swipes").child(currentUser.uid).child(user.uid).setValue(direction == .right)
+        try await database.child("swipes").child(currentUser.uid).child(user.uid!).setValue(direction == .right)
         
         guard direction == .right else { return }
-        let otherUserSwipeRight = try await swipe(for: user.uid, on: currentUser.uid)
+        let otherUserSwipeRight = try await swipe(for: user.uid!, on: currentUser.uid)
 
         guard otherUserSwipeRight else { return }
 
         // it´s a Match!
-        try await database.child("matches").child(currentUser.uid).child(user.uid).setValue(true)
-        try await database.child("matches").child(user.uid).child(currentUser.uid).setValue(true)
+        
+        try await database.child("matches").child(currentUser.uid).child(user.uid!).setValue(true)
+        try await database.child("matches").child(user.uid!).child(currentUser.uid).setValue(true)
 
         
+/*        try await database.child("matches").child(currentUser.uid).child(user.uid  init(uid: String?, name: String?, imageURL: URL?) {
+            self.uid = uid
+            self.name = name
+            self.imageURL = imageURL
+        }).setValue(true)
+        try await database.child("matches").child(user.uid!).child(currentUser.uid).setValue(true) */
+
     }
     
     public func swipe(for user: String, on anotherUser: String) async throws -> Bool {

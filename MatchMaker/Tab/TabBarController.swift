@@ -40,6 +40,8 @@ class TabBarController: UITabBarController {
     private func setupViewController() {
         // home, matches, inbox, settings
 
+//      let home = DiscoveryViewController()
+
         let home = setupDiscovery()
         let matches = setupMatches()
         let inbox = UIViewController()

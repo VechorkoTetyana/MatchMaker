@@ -18,7 +18,7 @@ public class MatchCell: UICollectionViewCell {
     }
     
     private func setupViews() {
-//      contentView.backgroundColor = .white
+        contentView.backgroundColor = .yellow
         contentView.layer.cornerRadius = 30
         contentView.clipsToBounds = true
         
@@ -35,7 +35,6 @@ public class MatchCell: UICollectionViewCell {
             make.edges.equalToSuperview()
         }
         
-        layoutIfNeeded()
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
         gradientLayer.locations = [0.6, 1.0]
@@ -51,6 +50,9 @@ public class MatchCell: UICollectionViewCell {
             make.bottom.trailing.equalToSuperview().inset(14)
             
         }
+        layoutIfNeeded()
+        gradientLayer.frame = overlayView.bounds
+        
     }
     func configure(with user: User) {
         nameLabel.text = user.name

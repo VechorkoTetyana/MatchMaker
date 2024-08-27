@@ -4,10 +4,35 @@ import DesignSystem
 import SDWebImage
 
 public struct User: Decodable {
-    let uid: String
-    let name: String
-    let imageURL: URL
+    let uid: String?
+    let name: String?
+    let imageURL: URL?
+    
+    public init(uid: String?, name: String?, imageURL: URL?) {
+           self.uid = uid
+           self.name = name
+           self.imageURL = imageURL
+       }
 
+    public enum CodingKeys: String, CodingKey {
+        case uid
+        case name
+        case imageURL
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.uid = try? container.decode(String.self, forKey: .uid)
+        self.name = try? container.decode(String.self, forKey: .name)
+
+        if let imageURLString = try? container.decode(String.self, forKey: .imageURL),
+           let validURL = URL(string: imageURLString) {
+            self.imageURL = validURL
+        } else {
+            self.imageURL = nil
+        }
+    }
 }
 
 public enum SwipeDirection {
@@ -42,28 +67,45 @@ public class DiscoveryViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+ //       loadCards()
 //      didFetchMatches()
         setupGestureRecognisers()
         fetchCards()
     }
     
+/*    private func loadCards() {
+        for user in mockUsers {
+            let cardView = CardView(user: user)
+            cardStackView.addCard(cardView)
+        }
+    }*/
+    
     private func fetchCards() {
         Task {
             do {
+                print("Test 1.1 before Func")
+
                 try await viewModel.fetchPotentialMatches()
+                print("Test 1.2 before Func")
+
                 didFetchMatches()
             } catch {
                 showError(error.localizedDescription)
+                print("Test Allert")
             }
         }
     }
     
     public func didFetchMatches() {
         for user in viewModel.potentialMatches {
-            let cardView = CardView(user: user)
-            cardStackView.addCard(cardView)
+            if let uid = user.uid, let name = user.name, let imageURL = user.imageURL {
+                let cardView = CardView(user: user)
+                cardStackView.addCard(cardView)
+            } else {
+                print("Incomplete user data: \(user)")
+                }
+            }
         }
-    }
     
     private func setupUI() {
         view.backgroundColor = .white
@@ -126,7 +168,7 @@ public class DiscoveryViewController: UIViewController {
         
         if translation.x > swipeThreshold {
             swipeCard(.right)
-        } else if translation.x > -swipeThreshold {
+        } else if translation.x < -swipeThreshold {
             swipeCard(.left)
         } else {
             resetCard(topCard)
@@ -136,7 +178,7 @@ public class DiscoveryViewController: UIViewController {
     private func swipeCard(_ direction: SwipeDirection) {
         guard let topCard = cardStackView.topCard else { return }
         
-        let translationX: CGFloat = direction == .right ? 200 : -200
+        let translationX: CGFloat = direction == .right ? 300 : -300
         
         UIView.animate(withDuration: 0.3) {
             topCard.center = CGPoint(x: topCard.center.x + translationX, y: topCard.center.y)

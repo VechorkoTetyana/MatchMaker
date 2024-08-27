@@ -25,6 +25,7 @@ public class DiscoveryCoordinator: Coordinator {
             container: container
         )
         let controller = DiscoveryViewController(viewModel: viewModel)
+//        controller.hidesBottomBarWhenPushed = true
         rootViewController = controller
         navigationController.pushViewController(controller, animated: true)
     }
