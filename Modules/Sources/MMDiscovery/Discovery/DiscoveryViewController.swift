@@ -187,7 +187,7 @@ public class DiscoveryViewController: UIViewController {
             // tell our view model to fire network request - it would be your task
             self.didFinishSwiupeAnimation(on: topCard, with: direction)
             
-            self.cardStackView.removeTopCard()
+//            self.cardStackView.removeTopCard()
         }
     }
     
